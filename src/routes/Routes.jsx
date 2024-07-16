@@ -2,18 +2,33 @@ import { createBrowserRouter } from "react-router-dom";
 import Root from "../layouts/root/Root";
 import Register from "../pages/register/Register";
 import Login from "../pages/login/Login";
-import Home from "../pages/HomoComponents/home/Home";
 import LogoutProtected from "./LogoutProtected";
 import ProtectedRoute from "./ProtectedRoute";
+import Dashboard from "../pages/HomoComponents/Dashboard/Dashboard";
+import SendMoney from "../pages/SendMoney/SendMoney";
+import CashOut from "../pages/CashOut/CashOut";
+import CashIn from "../pages/CashIn/CashIn";
 
 const router = createBrowserRouter([
     {
         path:'/',
-        element:<Root></Root>,
+        element:<ProtectedRoute><Root></Root></ProtectedRoute>,
         children:[
             {
                 path:'/',
-                element:<ProtectedRoute><Home></Home></ProtectedRoute>
+                element:<Dashboard></Dashboard>
+            },
+            {
+                path:'/send-money',
+                element:<SendMoney/>
+            },
+            {
+                path:'/cash-out',
+                element:<CashOut/>
+            },
+            {
+                path:'/cash-in',
+                element:<CashIn/>
             }
         ]
     },

@@ -5,16 +5,19 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { MdDashboard, MdOutlineCreateNewFolder } from "react-icons/md";
 import { FaHome, FaRegUserCircle, FaUsers } from "react-icons/fa";
 import { IoCloseSharp } from "react-icons/io5";
-import { GiHamburgerMenu } from "react-icons/gi";
+import { GiHamburgerMenu, GiReceiveMoney } from "react-icons/gi";
 import { BiDonateHeart } from 'react-icons/bi';
 import { IoIosLogOut } from 'react-icons/io';
 import { ImBlogger2 } from "react-icons/im";
+import useLogout from '../../Hooks/useLogout';
+import { FaMoneyBillTrendUp } from "react-icons/fa6";
 
 const Sidebar = () => {
 
     const [sidebar, SetSidebar] = useState(false)
     const navigate = useNavigate()
     const [active] = useState(false)
+    const {logout} = useLogout()
 
 
 
@@ -49,10 +52,10 @@ const Sidebar = () => {
 
                         <li>
                             <NavLink style={() => ({
-                                color: "#FF204E",
+                                color: "#3572EF",
                                 background: active ? '#374151' : ''
 
-                            })} to='/dashboard' className="flex items-center p-2 rounded-lg text-white hover:bg-gray-700 group">
+                            })} to='/' className="flex items-center p-2 rounded-lg text-white hover:bg-gray-700 group">
                                 <p className='text-2xl'><span className='text-gray-400 group-hover:text-white' >< MdDashboard /></span></p>
                                 <span className="ms-3">Dashboard</span>
 
@@ -60,74 +63,39 @@ const Sidebar = () => {
                         </li>
                         <li>
                             <NavLink style={({ isActive }) => ({
-                                color: "#FF204E",
+                                color: "#3572EF",
                                 background: isActive ? '#374151' : ''
-                            })} to='/dashboard/profile' className="flex items-center p-2 rounded-lg  hover:bg-gray-700 group">
-                                <p className='text-2xl'><span className='text-gray-400 group-hover:text-white' ><FaRegUserCircle /></span></p>
-                                <span className="ms-3">profile</span>
+                            })} to='/send-money' className="flex items-center p-2 rounded-lg  hover:bg-gray-700 group">
+                                <p className='text-2xl'><span className='text-gray-400 group-hover:text-white' ><GiReceiveMoney /></span></p>
+                                <span className="ms-3">Send Money</span>
                             </NavLink>
                         </li>
                         { 
                             <li>
                                 <NavLink style={({ isActive }) => ({
-                                    color: "#FF204E",
+                                    color: "#3572EF",
                                     background: isActive ? '#374151' : ''
-                                })} to='/dashboard/create-donation-request' className="flex items-center p-2 rounded-lg  hover:bg-gray-700 group">
-                                    <p className='text-2xl'><span className='text-gray-400 group-hover:text-white' ><MdOutlineCreateNewFolder /></span></p>
-                                    <span className="ms-3">Create Donation Request</span>
+                                })} to='/cash-out' className="flex items-center p-2 rounded-lg  hover:bg-gray-700 group">
+                                    <p className='text-2xl'><span className='text-gray-400 group-hover:text-white' ><FaMoneyBillTrendUp /></span></p>
+                                    <span className="ms-3">Cash Out</span>
                                 </NavLink>
                             </li>
                         }
                         { 
                             <li>
                                 <NavLink style={({ isActive }) => ({
-                                    color: "#FF204E",
+                                    color: "#3572EF",
                                     background: isActive ? '#374151' : ''
-                                })} to='/dashboard/my-donation-requests' className="flex items-center p-2 rounded-lg  hover:bg-gray-700 group">
+                                })} to='/cash-in' className="flex items-center p-2 rounded-lg  hover:bg-gray-700 group">
                                     <p className='text-2xl'><span className='text-gray-400 group-hover:text-white' ><BiDonateHeart /></span></p>
-                                    <span className="ms-3">My Donation Requests</span>
+                                    <span className="ms-3">Cash In</span>
                                 </NavLink>
                             </li>
                         }
-                        {
-                            (<li>
-                            <NavLink style={({ isActive }) => ({
-                                color: "#FF204E",
-                                background: isActive ? '#374151' : ''
-                            })} to='/dashboard/all-users' className="flex items-center p-2 rounded-lg  hover:bg-gray-700 group">
-                                <p className='text-2xl'><span className='text-gray-400 group-hover:text-white' > <FaUsers /></span></p>
-                                <span className="ms-3">All Users</span>
-                            </NavLink>
-                        </li>)
-                        }
-                        { (
-                            <li>
-                            <NavLink style={({ isActive }) => ({
-                                color: "#FF204E",
-                                background: isActive ? '#374151' : ''
-                            })} to='/dashboard/all-blood-donation-request' className="flex items-center p-2 rounded-lg  hover:bg-gray-700 group">
-                                <p className='text-2xl'><span className='text-gray-400 group-hover:text-white' > <BiDonateHeart /></span></p>
-                                <span className="ms-3">All Blood Donation Request</span>
-                            </NavLink>
-                        </li>
-                        )}
-                        {(
-                            <li>
-                            <NavLink style={({ isActive }) => ({
-                                color: "#FF204E",
-                                background: isActive ? '#374151' : ''
-                            })} to='/dashboard/content-management' className="flex items-center p-2 rounded-lg  hover:bg-gray-700 group">
-                                <p className='text-2xl'><span className='text-gray-400 group-hover:text-white' > <ImBlogger2 /></span></p>
-                                <span className="ms-3">Content Management</span>
-                            </NavLink>
-                        </li>
-                        )}
                     </ul>
 
                     <ul className='self-end md:space-x-6 lg:space-x-16'>
-
-                        <Link to='/'><button className='btn btn-sm bg-green-500 text-white'>< FaHome /> Home</button></Link>
-                        <button onClick={""} className='btn btn-sm btn-error text-white'>Logout <IoIosLogOut /></button>
+                        <button onClick={logout} className='btn btn-sm btn-error text-white'>Logout <IoIosLogOut /></button>
                     </ul>
                 </div>
             </aside>
