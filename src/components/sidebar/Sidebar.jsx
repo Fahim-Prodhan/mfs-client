@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unknown-property */
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import logo from '../../assets/images/logo.png'
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { MdDashboard, MdOutlineCreateNewFolder } from "react-icons/md";
@@ -8,9 +8,10 @@ import { IoCloseSharp } from "react-icons/io5";
 import { GiHamburgerMenu, GiReceiveMoney } from "react-icons/gi";
 import { BiDonateHeart } from 'react-icons/bi';
 import { IoIosLogOut } from 'react-icons/io';
-import { ImBlogger2 } from "react-icons/im";
+import { ImBlogger2, ImUsers } from "react-icons/im";
 import useLogout from '../../Hooks/useLogout';
 import { FaMoneyBillTrendUp } from "react-icons/fa6";
+import { AuthContext } from '../../Context/AuthContext';
 
 const Sidebar = () => {
 
@@ -18,6 +19,7 @@ const Sidebar = () => {
     const navigate = useNavigate()
     const [active] = useState(false)
     const {logout} = useLogout()
+    const {authUser} = useContext(AuthContext)
 
 
 
@@ -61,6 +63,28 @@ const Sidebar = () => {
 
                             </NavLink>
                         </li>
+                        { authUser.role === 'admin' &&
+                            <li>
+                                <NavLink style={({ isActive }) => ({
+                                    color: "#3572EF",
+                                    background: isActive ? '#374151' : ''
+                                })} to='/new-users' className="flex items-center p-2 rounded-lg  hover:bg-gray-700 group">
+                                    <p className='text-2xl'><span className='text-gray-400 group-hover:text-white' ><ImUsers /></span></p>
+                                    <span className="ms-3">New Users</span>
+                                </NavLink>
+                            </li>
+                        }
+                        { authUser.role === 'admin' &&
+                            <li>
+                                <NavLink style={({ isActive }) => ({
+                                    color: "#3572EF",
+                                    background: isActive ? '#374151' : ''
+                                })} to='/all-users' className="flex items-center p-2 rounded-lg  hover:bg-gray-700 group">
+                                    <p className='text-2xl'><span className='text-gray-400 group-hover:text-white' ><FaUsers /></span></p>
+                                    <span className="ms-3">All Users</span>
+                                </NavLink>
+                            </li>
+                        }
                         <li>
                             <NavLink style={({ isActive }) => ({
                                 color: "#3572EF",
@@ -70,6 +94,7 @@ const Sidebar = () => {
                                 <span className="ms-3">Send Money</span>
                             </NavLink>
                         </li>
+                      
                         { 
                             <li>
                                 <NavLink style={({ isActive }) => ({

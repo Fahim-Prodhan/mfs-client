@@ -6,7 +6,6 @@ import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { Link } from 'react-router-dom';
 import logo from '../../assets/images/logo.png'
 import useLogin from '../../Hooks/useLogin';
-import './SendMoney.css'
 
 const SendMoney = () => {
     const { login } = useLogin();
@@ -50,7 +49,7 @@ const SendMoney = () => {
                                     <label className="label">
                                         <span className="label-text">To</span>
                                     </label>
-                                    <input name="username" type="text" placeholder="Enter phone/email" className="input input-bordered lg:w-80" required onChange={handleChange} />
+                                    <input name="username" type="text" placeholder="Enter phone" className="input input-bordered lg:w-80" required onChange={handleChange} />
                                 </div>
                                 <div className="form-control ">
                                     <label className="label">

@@ -8,6 +8,8 @@ import Dashboard from "../pages/HomoComponents/Dashboard/Dashboard";
 import SendMoney from "../pages/SendMoney/SendMoney";
 import CashOut from "../pages/CashOut/CashOut";
 import CashIn from "../pages/CashIn/CashIn";
+import NewUsers from "../pages/NewUsers/NewUsers";
+import AllUsers from "../pages/AllUsers/AllUsers";
 
 const router = createBrowserRouter([
     {
@@ -21,6 +23,14 @@ const router = createBrowserRouter([
             {
                 path:'/send-money',
                 element:<SendMoney/>
+            },
+            {
+                path:'/new-users',
+                element:<NewUsers/>
+            },
+            {
+                path:'/all-users',
+                element:<AllUsers/>
             },
             {
                 path:'/cash-out',

@@ -13,11 +13,11 @@ const Dashboard = () => {
                 </div>
                 <div className='shadow-lg py-6'>
                     <p className='text-center'>Last Transaction</p>
-                    <p className='text-center text-2xl font-bold text-blue-400'>10,0000 /=</p>
+                    <p className='text-center text-2xl font-bold text-blue-400'>10,0000.00 /=</p>
                 </div>
                 <div className='shadow-lg py-6'>
                     <p className='text-center'>Balance</p>
-                    <p className='text-center text-2xl font-bold text-blue-400'>10,0000 /=</p>
+                    <p className='text-center text-2xl font-bold text-blue-400'>{authUser.balance}.00 /=</p>
                 </div>
             </div>
             <hr className='my-12 border-2' />

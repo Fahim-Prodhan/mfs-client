@@ -14,6 +14,7 @@ const useSignup = () => {
         if (!success) return;
 
         setLoading(true);
+
         try {
             const res = await fetch("/api/auth/signup", {
                 method: "POST",
@@ -26,7 +27,8 @@ const useSignup = () => {
             }
             localStorage.setItem("mfs", JSON.stringify(data));
             setAuthUser(data);
-            navigate("/login");
+            navigate("/");
+            location.reload()
         } catch (error) {
             toast.error(error.message);
         } finally {
